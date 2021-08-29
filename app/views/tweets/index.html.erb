@@ -1,14 +1,26 @@
-<div>
-  <h1>Github_Auth</h1>
-  <div>
-    
+<div style = "display:flex">
+  <h1 style = "margin:0px;">Github_Auth</h1>
+  <div style = "">
+    <% if user_signed_in? %>
+      <form action = "/users/sign_out" method = "post">
+       <input type = "submit" value = "ログアウト"></input>
+      </form>
+      <a href = "/users/<%= current_user.id%>"></a>
+    <% else %>
+      <a href = "/users/sign_in">Login</a> 
+      <a href = "/users/sign_up">Sign Up</a> 
+    <% end %>
   </div>
 </div>
 <div>
  <div>
-   <form action = "/tweet" method = "post">
-     <input type = "text" name = "text"></input>
-     <input type = "submit" value = "投稿"></input>
-   </form>
+   <% if user_signed_in?%>
+     <form action = "/tweet" method = "post">
+       <input type = "text" name = "text"></input>
+       <input type = "submit" value = "投稿"></input>
+     </form>
+   <% else %>
+     <h2>サインアップ・ログインをしよう</h2>
+   <% end %>
  </div>
 </div>
