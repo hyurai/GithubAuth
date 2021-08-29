@@ -1,11 +1,9 @@
-<div style = "display:flex">
-  <h1 style = "margin:0px;">Github_Auth</h1>
-  <div style = "">
+<div style = "display:flex;width:100%;">
+  <h1 style = "margin:0px;width:75%;">Github_Auth</h1>
+  <div style = "display: flex;width:25%;">
     <% if user_signed_in? %>
-      <form action = "/users/sign_out" method = "post">
-       <input type = "submit" value = "ログアウト"></input>
-      </form>
-      <a href = "/users/<%= current_user.id%>"></a>
+     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <a href = "/users/<%= current_user.id%>">Mypage</a>
     <% else %>
       <a href = "/users/sign_in">Login</a> 
       <a href = "/users/sign_up">Sign Up</a> 
@@ -15,12 +13,18 @@
 <div>
  <div>
    <% if user_signed_in?%>
-     <form action = "/tweet" method = "post">
+     <form action = "/tweets" method = "post">
+       <input type = "hidden" name = "user_id" value = "<%= current_user.id%>"></input>
        <input type = "text" name = "text"></input>
        <input type = "submit" value = "投稿"></input>
      </form>
    <% else %>
      <h2>サインアップ・ログインをしよう</h2>
+   <% end %>
+ </div>
+ <div>
+   <% @tweets.each do |tweet|%>
+     <p><%= tweet.text%></p>
    <% end %>
  </div>
 </div>
