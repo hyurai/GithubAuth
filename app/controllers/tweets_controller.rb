@@ -4,5 +4,7 @@ class TweetsController < ApplicationController
     @tweets = Tweet.all
   end
   def create
+    tweet = Tweet.create(user_id: params[:user_id],text: params[:text])
+    redirect_to '/tweet'
   end
 end
