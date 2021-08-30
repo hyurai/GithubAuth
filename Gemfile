@@ -26,6 +26,8 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'omniauth', '~> 1.9.1'
 gem 'omniauth-github'
+gem 'pry'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

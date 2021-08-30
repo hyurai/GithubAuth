@@ -24,6 +24,7 @@
  </div>
  <div>
    <% @tweets.each do |tweet|%>
+     <p><%= tweet.user.name%></p>
      <p><%= tweet.text%></p>
    <% end %>
  </div>
